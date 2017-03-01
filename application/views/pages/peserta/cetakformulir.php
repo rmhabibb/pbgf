@@ -5,25 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  
  
-<table class="tg" style=" width: 800px">
-  <colgroup>
-  <col style="width: 281.88889px">
-  <col style="width: 200px">
-  <col style="width: 450px">
-  </colgroup>
-  <tr>
-    <td class="tg-amwm" colspan="3">
-      <img src="<?php echo base_url(); ?>assets/img/team/unsri.png" id="unsri"><img src="<?php echo base_url(); ?>assets/img/team/bem.png" id="bem"> <h2>FORMULIR PENDAFTARAN <br>PEMILIHAN BUJANG GADIS FASILKOM<br> UNIVERSITAS SRIWIJAYA 2017</h2> 
-    </td>
+<table class="tg" style=" width: 800px" border="1"> 
+  <tr >
+    <th  colspan="3" style="border-bottom-color: black">      
+      
+            <h2 style="letter-spacing: 3px;">FORMULIR PENDAFTARAN <br>PEMILIHAN BUJANG GADIS FASILKOM<br> UNIVERSITAS SRIWIJAYA 2017</h2> 
+ 
+    </th>
   </tr>
   <tr>
-      <td style="vertical-align:center; text-align: center; font-weight: bold" rowspan="15">
-        Foto
+      <td style="width:300px; font-weight: bold; border-right-color: black;" rowspan="15">
+        <center>
+        <table border="1">
+          <tr  >
+            <td style="padding: 113.385.827px 75.590.551px; " > 
+              Foto <br>
+              (4 x 6)
+            </td>
+          </tr>
+          
+        </table>
+       
+        </center>
       </td>
-      <td class="tg-i81m">
+      <td  style="width:200px; font-weight: bold;">
         Nama Lengkap
       </td>
-      <td class="tg-i81m">
+      <td >
           <?php 
               if(isset($peserta->nama_lengkap)){
                    echo $peserta->nama_lengkap;        
@@ -32,7 +40,7 @@
       </td>
   </tr>
   <tr>
-    <td class="tg-i81m">
+    <td class="tg-i81m" style=" font-weight: bold;">
       NIM
     </td>
     <td class="tg-i81m">
@@ -44,7 +52,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">Tempat, Tanggal Lahir</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Tempat, Tanggal Lahir</td>
     <td class="tg-i81m">
       <?php 
               if(isset($peserta->tempat_lahir) && isset($peserta->tanggal_lahir)){
@@ -55,7 +63,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">
+    <td class="tg-i81m" style=" font-weight: bold;">
       Agama
     </td>
     <td class="tg-i81m">
@@ -67,7 +75,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">Jenis Kelamin</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Jenis Kelamin</td>
     <td class="tg-i81m">
       <?php 
               if(isset($peserta->jk)){
@@ -77,7 +85,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">IPK</td>
+    <td class="tg-i81m" style=" font-weight: bold;">IPK</td>
     <td class="tg-i81m">
       <?php 
               if(isset($peserta->ipk)){
@@ -87,7 +95,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">Jurusan</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Jurusan</td>
     <td class="tg-i81m">
        <?php 
               if(isset($peserta->jurusan)){
@@ -97,7 +105,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">Angkatan</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Angkatan</td>
     <td class="tg-i81m">
        <?php 
               if(isset($peserta->angkatan)){
@@ -107,7 +115,7 @@
     </td>
   </tr> 
   <tr>
-    <td class="tg-i81m">Media Sosial</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Media Sosial</td>
     <td class="tg-3we0">
         <?php 
               if(isset($peserta->line) && isset($peserta->ig)){
@@ -123,9 +131,9 @@
 
     </td>
   </tr>
-  <tr style="height: 150px;"> 
-    <td class="tg-i81m" >Alamat</td>
-    <td class="tg-3we0">
+  <tr> 
+    <td class="tg-i81m" style="height: 100px ; font-weight: bold;">Alamat</td>
+    <td style=" vertical-align: top" >
       <?php 
               if(isset($peserta->alamat)){
                    echo $peserta->alamat;        
@@ -135,7 +143,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">Hobi</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Hobi</td>
     <td class="tg-3we0">
       <?php 
               if(isset($peserta->hobi)){
@@ -145,7 +153,7 @@
 </td>
   </tr>
   <tr>
-    <td class="tg-i81m">Tinggi Badan</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Tinggi Badan</td>
     <td class="tg-i81m">
       <?php 
               if(isset($peserta->tb)){
@@ -156,7 +164,7 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-i81m">Berat Badan</td>
+    <td class="tg-i81m" style=" font-weight: bold;">Berat Badan</td>
     <td class="tg-i81m">
       <?php 
               if(isset($peserta->bb)){
@@ -166,8 +174,8 @@
 
     </td>
   </tr>
-  <tr style="height: 150px; ">
-    <td class="tg-i81m">Motivasi Mengikuti BGF</td>
+  <tr >
+    <td class="tg-i81m" style="height: 150px ; height: 120px;  font-weight: bold;">Motivasi Mengikuti BGF</td>
     <td class="tg-i81m">
       <?php 
               if(isset($peserta->motivasi)){
@@ -177,8 +185,9 @@
 
     </td>
   </tr>
-  <tr style="height: 150px; ">
-    <td class="tg-i81m">Riwayat Organisasi</td>
+  <tr  >
+
+    <td class="tg-i81m" style=" font-weight: bold; height: 120px;" >Riwayat Organisasi</td>
     <td class="tg-i81m">
       <?php 
               if(isset($peserta->riwayat_organisasi)){
@@ -189,12 +198,16 @@
     </td>
   </tr>
   <tr>
-    <td class="tg-amwm" colspan="3">
-      PRESTASI YANG PERNAH DICAPAI
+    <td class="tg-amwm" colspan="3" style="border-bottom-color: black; border-top-color: black;">
+
+      <center>
+        PRESTASI YANG PERNAH DICAPAI
+      </center>
+
     </td>
-  </tr>
-  <tr style="height: 250px">
-    <td class="tg-yw4l" colspan="3">
+    </tr>
+  <tr >
+    <td class="tg-yw4l" style="height: 120px;" colspan="3">
       <?php 
               if(isset($peserta->prestasi)){
                    echo $peserta->prestasi;        

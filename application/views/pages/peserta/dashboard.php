@@ -203,34 +203,28 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="team-member">
                         <img src="<?php echo base_url(); ?>assets/img/team/1.jpg" class="img-responsive img-circle" alt="">
                         <h4>Herlan</h4>
                         <p class="text-muted">(0812121212121)</p>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="team-member">
                         <img src="<?php echo base_url(); ?>assets/img/team/2.jpg" class="img-responsive img-circle" alt="">
                         <h4>Surip</h4>
                         <p class="text-muted">Lead Marketer</p>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="team-member">
                         <img src="<?php echo base_url(); ?>assets/img/team/3.jpg" class="img-responsive img-circle" alt="">
                         <h4>Annin</h4>
                         <p class="text-muted">Lead Developer</p>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="team-member">
-                        <img src="<?php echo base_url(); ?>assets/img/team/3.jpg" class="img-responsive img-circle" alt="">
-                        <h4>Annin</h4>
-                        <p class="text-muted">Lead Developer</p>
-                    </div>
-                </div>
+                
             </div>
             
 
