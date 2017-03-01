@@ -520,23 +520,49 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td colspan="2" style="text-align: center"><h4><b>Prestasi yang Pernah di Capai</b></h4></td> 
+        <td><h4><b>Prestasi yang Pernah di Capai</b></h4></td>
+        <td><div id="tambah" class="btn btn-info"><i class="fa fa-plus"></i></div></td> 
       </tr>
-      <tr> 
-        <td colspan="2">
-            <?php 
-                if(isset($peserta->prestasi)){
-                  ?>
-                    <textarea name="prestasi"   ><?php echo $peserta->prestasi; ?></textarea>
-                  <?php
-                } else { ?>
-                            
-                    <textarea name="prestasi"  value=" ">#Nama Penghargaan - Instansi Pemberi Penghargaan - Tahun</textarea>
-              <?php
-                }  
-              ?> 
-         </td>  
-      </tr>
+      <div id="wrapper">
+      <?php 
+        $prestasi = explode(',', $peserta->prestasi);
+        $instansi = explode(',', $peserta->instansi_pemberi);
+        $tahun    = explode(',', $peserta->tahun_prestasi);
+        $jmlh = count($prestasi);
+        if($jmlh > 0):
+          for($i=0; $i < $jmlh; $i++): 
+      ?>
+
+        <tr>
+          <td>Nama Penghargaan</td>
+          <td>Instansi Pemberi Penghargaan</td>
+          <td>Tahun</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="nama_prestasi[<?= $i ?>]" class="form-control" value="<?= $prestasi[$i] ?>"></td>
+          <td><input type="text" name="instansi[<?= $i ?>]" class="form-control" value="<?= $instansi[$i] ?>"></td>
+          <td><input type="text" name="tahun[<?= $i ?>]" class="form-control" value="<?= $tahun[$i] ?>"></td>
+          <td></td>
+        </tr>
+
+      <?php endfor; ?>
+      <?php else: ?>
+
+        <tr>
+          <td>Nama Penghargaan</td>
+          <td>Instansi Pemberi Penghargaan</td>
+          <td>Tahun</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="nama_prestasi[]" class="form-control"></td>
+          <td><input type="text" name="instansi[]" class="form-control"></td>
+          <td><input type="text" name="tahun[]" class="form-control"></td>
+          <td></td>
+        </tr>
+      <?php endif; ?>
+      </div>
     </tbody>
   </table>
    <button type="submit" name="simpan" value="Daftar" class="button button-block"/>Simpan</button>
@@ -547,6 +573,22 @@ td ,th {
           </div>
    </header>
            
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var i = <?= $jmlh ?>;
+      $("#tambah").click(function(){
+        $("#wrapper").append(
+        '<tr>'+
+          '<td><input type="text" name="nama_prestasi['+ i +']" class="form-control" ></td>'+
+          '<td><input type="text" name="instansi['+ i +']" class="form-control"></td>'+
+          '<td><input type="text" name="tahun['+ i +']" class="form-control"></td>'+
+          '<td></td>'+
+        '</tr>');
+      });
+    });
+
+  </script>
     
     
       
