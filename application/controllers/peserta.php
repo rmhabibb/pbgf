@@ -50,27 +50,29 @@
 		}
  		
  		public function simpanformulir(){  
-			$username   = $this->session->userdata['user_data']['username'];
-		 	$nama		= $this->input->post('nama_lengkap');
-		 	$nim 		= $this->input->post('nim');
+			$username   		= $this->session->userdata['user_data']['username'];
+		 	$nama				= $this->input->post('nama_lengkap');
+		 	$nim 				= $this->input->post('nim');
 		 	$tempat_lahir 		= $this->input->post('tempat_lahir'); 
 			$tanggal_lahir 		= $this->input->post('tanggal_lahir'); 
-			$agama 		= $this->input->post('agama');
-		 	$jk 		= $this->input->post('jk');
-		 	$ipk 		= $this->input->post('ipk');
-			$jurusan 	= $this->input->post('jurusan');
-			$angkatan 	= $this->input->post('angkatan');
-			$line 		= $this->input->post('line');
-			$ig 		= $this->input->post('ig');
-			$alamat 	= $this->input->post('alamat');
-			$hobi 		= $this->input->post('hobi');
-			$tb 		= $this->input->post('tb');
-			$bb 		= $this->input->post('bb');
-			$motivasi 		= $this->input->post('motivasi');
-			$riwayat_organisasi 		= $this->input->post('riwayat_organisasi');
-			$prestasi 	= $this->input->post('prestasi'); 
+			$agama 				= $this->input->post('agama');
+		 	$jk 				= $this->input->post('jk');
+		 	$ipk 				= $this->input->post('ipk');
+			$jurusan 			= $this->input->post('jurusan');
+			$angkatan 			= $this->input->post('angkatan');
+			$line 				= $this->input->post('line');
+			$ig 				= $this->input->post('ig');
+			$alamat 			= $this->input->post('alamat');
+			$hobi 				= $this->input->post('hobi');
+			$tb 				= $this->input->post('tb');
+			$bb 				= $this->input->post('bb');
+			$motivasi 			= $this->input->post('motivasi');
+			$riwayat_organisasi = $this->input->post('riwayat_organisasi');
+			$nama_prestasi 		= $this->input->post('nama_prestasi'); 
+			$instansi			= $this->input->post('instansi');
+			$tahun				= $this->input->post('tahun');
 
-			if($ipk > 4){
+			if($ipk > 4 || $ipk < 2){
 				$this->session->set_flashdata('msg', '<div class="alert alert-danger">IPK yang anda inputkan tidak boleh lebih dari 4! Isi kembali IPK yang sesuai!</div>');
 				redirect('Peserta/formulir');
 				exit;
@@ -78,26 +80,53 @@
 
  
 				if($this->input->post('simpan')){ 
-					if(isset ($nama,$nim,$tempat_lahir,$tanggal_lahir,$agama,$jk ,$ipk,$jurusan,$angkatan ,$line,$ig ,$alamat,$hobi ,$tb ,$bb ,$motivasi,$riwayat_organisasi,$prestasi)){ 
+					if(isset ($nama,$nim,$tempat_lahir,$tanggal_lahir,$agama,$jk ,$ipk,$jurusan,$angkatan ,$line,$ig ,$alamat,$hobi ,$tb ,$bb ,$motivasi,$riwayat_organisasi)){ 
+
+						if(isset($nama_prestasi)){
+							$prestasi = $nama_prestasi;
+							$prestasi = implode(',', $prestasi);
+						} else {
+							$prestasi = array();
+							$prestasi = implode(',', $prestasi);
+						}
+
+						if(isset($instansi)){
+							$nama_instansi = $instansi;
+							$nama_instansi = implode(',', $nama_instansi) ;
+						} else {
+							$nama_instansi = array();
+							$nama_instansi = implode(',', $nama_instansi);
+						}
+
+						if(isset($tahun)){
+							$t = $tahun;
+							$t = implode(',', $t) ;
+						} else {
+							$t = array();
+							$t = implode(',', $t);
+						}						
+
 						$input = array(
 							'nama_lengkap'		=> $nama,
-							'nim'	=> $nim, 
-							'tempat_lahir'	=> $tempat_lahir,
-							'tanggal_lahir'	=> $tanggal_lahir,
-							'agama'		=> $agama,
-							'jk'		=> $jk,
-							'ipk'		=> $ipk, 
-							'jurusan'	=> $jurusan,
-							'angkatan'	=> $angkatan,
-							'line'		=> $line,
-							'ig'		=> $ig,
-							'alamat'	=> $alamat,
-							'hobi'	=> $hobi,
-							'tb'	=> $tb,
-							'bb'	=> $bb,
-							'motivasi'	=> $motivasi,
+							'nim'				=> $nim, 
+							'tempat_lahir'		=> $tempat_lahir,
+							'tanggal_lahir'		=> $tanggal_lahir,
+							'agama'				=> $agama,
+							'jk'				=> $jk,
+							'ipk'				=> $ipk, 
+							'jurusan'			=> $jurusan,
+							'angkatan'			=> $angkatan,
+							'line'				=> $line,
+							'ig'				=> $ig,
+							'alamat'			=> $alamat,
+							'hobi'				=> $hobi,
+							'tb'				=> $tb,
+							'bb'				=> $bb,
+							'motivasi'			=> $motivasi,
 							'riwayat_organisasi'=> $riwayat_organisasi,
-							'prestasi'		=>$prestasi
+							'prestasi'			=> $prestasi,
+							'instansi_pemberi'	=> $nama_instansi,
+							'tahun_prestasi'	=> $t
 						);
 
 						$this->formulir_model->update($username , $input);
