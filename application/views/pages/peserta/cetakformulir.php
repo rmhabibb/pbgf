@@ -7,13 +7,14 @@
  
 <table class="tg" style=" width: 800px" border="1"> 
   <tr >
-    <td id="th" colspan="3" style="border-bottom-color: black">      
+    <th id="th" colspan="3" style="border-bottom-color: black">      
+
         <img src="<?php echo base_url();?>assets/img/team/unsri.png" id="unsri" >
         <img src="<?php echo base_url();?>assets/img/team/bem.png" id="bem" >
-         
+         <img src="<?php echo base_url();?>assets/img/team/ibgf.png" id="ibgf" >
             <h2 style="letter-spacing: 3px;">FORMULIR PENDAFTARAN <br>PEMILIHAN BUJANG GADIS FASILKOM<br> UNIVERSITAS SRIWIJAYA 2017</h2> 
  
-    </td>
+    </th>
   </tr>
   <tr>
       <td style="width:300px; font-weight: bold; border-right-color: black;" rowspan="15">
