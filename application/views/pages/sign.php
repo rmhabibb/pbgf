@@ -1,32 +1,22 @@
-    <?php
-    $logged = $this->session->userdata('user_data');
+<?php
+    // $logged = $this->session->userdata('user_data');
      
-      if (isset($logged)){
-         $user_role = $this->session->userdata['user_data']['role'];  
-          if ($user_role == 'Admin'){
-               redirect('admin'.'/');
-          } else if ($user_role == 'Peserta'){
-               redirect('peserta'.'/');
-             } else if ($user_role == 'Panitia'){
-               redirect('panitia'.'/');
-             }
-      } 
-  ?> 
-    <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header  ">
-               <center>
-                <a class=" " href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/img/logos/logo-nav.png" style="width: 20%"></a>
-            </center>
-            </div>
- 
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <br><br><br>
+    //   if (isset($logged)){
+    //      $user_role = $this->session->userdata['user_data']['role'];  
+    //       if ($user_role == 'Admin'){
+    //            redirect('admin'.'/');
+    //       } else if ($user_role == 'Peserta'){
+    //            redirect('peserta'.'/');
+    //          } else if ($user_role == 'Panitia'){
+    //            redirect('panitia'.'/');
+    //          }
+    //   } 
+?> 
+    <div style="margin-top: 5%; margin-bottom: -5%;">
+      <center>
+          <a class=" " href="<?php echo base_url(); ?>"><img src="<?php echo base_url(); ?>assets/img/logos/logo-nav.png" style="width: 20%"></a>
+      </center>
+    </div>
     <section>
         <div class="form">
       
@@ -46,9 +36,7 @@
       </div>
        <div id="login">    
          
-          <?php 
-          echo form_open('login/user_validate');
-          ?>
+          <?php echo form_open('login/user_validate');?>
             <div class="field-wrap">
               <label>
                 ID/NIM<span class="req">*</span>
@@ -60,22 +48,16 @@
             <label>
               Password<span class="req">*</span>
             </label>
-            <?php 
-                echo form_password('password');
-            ?> 
+            <?php echo form_password('password');?> 
           </div> 
           
-            <button type="submit" class="button button-block"/>login</button>
+          <input type="submit" class="button button-block" name="login" value="Login" />
           
-           <?php 
-          echo form_close();
-          ?>
+          <?php echo form_close();?>
         </div>
         <div id="signup">    
           
-           <?php 
-          echo form_open('Login/create_user');
-          ?>
+          <?php echo form_open('Login/create_user'); ?>
             <div class="field-wrap">
               <label>
                 NIM<span class="req">*</span>
@@ -87,27 +69,24 @@
             <label>
               Password (Minimal 8 Karakter)<span class="req">*</span>
             </label>
-            <input  type="password" name="password" minlength="8"  required value="">
+            <input  type="password" name="password1" required value="">
+            <!-- <input  type="password" name="password" minlength="8"  required value=""> -->
           </div> 
           
           <div class="field-wrap">
            <label>
               Konfirmasi Password<span class="req">*</span>
             </label>
-            <input  type="password" name="repassword"  required value="">
+            <input  type="password" name="password2"  required value="">
           </div> 
           
-          <button type="submit" class="button button-block"/>Submit</button>
+          <input type="submit" name="regist" class="button button-block" value="Daftar">
+          <!-- <button type="submit" class="button button-block"/>Submit</button> -->
           
-          <?php 
-          echo form_close();
-          ?>
+          <?php echo form_close(); ?>
         </div>
         
-       
-        
-      </div><!-- tab-content -->
-      
-</div> <!-- /form -->
-    </section>
+      </div><!-- tab-content -->    
+  </div> <!-- /form -->
+</section>
   

@@ -5,39 +5,71 @@
 	{	
 		public function __construct(){
 			parent::__construct();
-			$this->load->model('user_model');
-			$this->load->helper('url_helper');
+			// $this->load->model('user_model');
+			// $this->load->helper('url_helper');
 
-			$logged = $this->session->userdata('user_data');
-			$user_role = $this->session->userdata['user_data']['role'];
-			if (!isset($logged)){
-			   redirect('sign');
-			} else if (isset($logged) && $user_role == 'Panitia'){
-				redirect('Panitia');
-			} else if (isset($logged) && $user_role == 'Peserta'){
-				redirect('Peserta');
+			// $logged = $this->session->userdata('user_data');
+			// $user_role = $this->session->userdata['user_data']['role'];
+			$username = $this->session->userdata('username');
+			$role     = $this->session->userdata('role');
+			if (!isset($username, $role)){
+			   redirect('login');
+			   exit;
 			}
+
+			if($role != 'admin'){
+				redirect('login');
+				exit;
+			}
+	 		
+	 		$this->load->model('peserta_model');
 	 	}
  		
- 		function logout(){
-		$this->session->unset_userdata('user_data');
-		redirect('');
-		print_r($_SESSION);
-		}
+ 	// 	function logout(){
+		// $this->session->unset_userdata('user_data');
+		// redirect('');
+		// print_r($_SESSION);
+		// }
 
  		public function index(){
- 			$data['peserta'] = $this->user_model->get_perserta();
- 			$this->load->view('includes/header');  
- 			$this->load->view('pages/daftar_peserta',$data); 
- 			$this->load->view('includes/footer'); 
+ 			$data = [
+ 				'title'		=> 'Daftar Peserta | ',
+ 				'content'	=> 'pages/dashboard_admin',
+ 				'peserta'	=> $this->Peserta_model->get_peserta()
+ 			];
+ 			$this->load->view('includes/templates', $data);  
 		}
 
- 		public function daftar_peserta(){
- 			$data['peserta'] = $this->user_model->get_perserta();
- 			$this->load->view('includes/header');  
- 			$this->load->view('pages/daftar_peserta',$data); 
- 			$this->load->view('includes/footer'); 
+		public function hasil(){
+			if ($this->input->post('id_peserta')){
+				$id_peserta = $this->input->post('id_peserta');
+				$peserta 	= $this->peserta_model->get_row($id_peserta);
+				
+				if (isset($peserta))
+				{
+					if ($peserta->status == 'lulus')
+					{
+						// echo "hay";
+						// exit;
+						$this->peserta_model->updt($id_peserta, ['status' => 'tidak lulus']);
+						echo '<button class="btn btn-danger" onclick="changeStatus("'.$id_peserta.'")"><i class="fa fa-close"></i> Tidak Lulus</button>';
+					}
+					else
+					{
+						//echo "hoy"; exit;
+						$this->peserta_model->updt($id_peserta, ['status' => 'lulus']);
+						echo '<button class="btn btn-success" onclick="changeStatus("'.$id_peserta.'")"><i class="fa fa-check"></i> Lulus</button>';	
+					}
+				 }
+			}
 		}
+
+ 	// 	public function daftar_peserta(){
+ 	// 		$data['peserta'] = $this->user_model->get_perserta();
+ 	// 		$this->load->view('includes/header');  
+ 	// 		$this->load->view('pages/daftar_peserta',$data); 
+ 	// 		$this->load->view('includes/footer'); 
+		// }
 
 		public function daftar_panitia(){
  			$data['peserta'] = $this->user_model->get_panitia();
@@ -54,6 +86,11 @@
  			$this->load->view('includes/header');  
  			$this->load->view('pages/create_panitia'); 
  			$this->load->view('includes/footer'); 
+		}
+
+		public function logout(){
+			$this->session->sess_destroy();
+			redirect('login');
 		}	
  	}
 

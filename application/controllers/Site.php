@@ -1,7 +1,7 @@
 <?php
 
 	 	
-	class site extends CI_Controller
+	class Site extends CI_Controller
 	{
 		 
 		 public function __construct(){
@@ -20,6 +20,14 @@
       } 
 			
 		 }
+
+		public function index(){
+			 $data = [
+ 				'title'		=> 'Home',
+ 				'content'	=> 'pages/dashboard'
+ 			];
+ 			$this->load->view('includes/templates', $data); 
+		}
 
 		public function view ($page = 'dashboard'){ 
 

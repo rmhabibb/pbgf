@@ -1,3 +1,6 @@
+<link href="<?= base_url('assets/css/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?= base_url('assets/js/bootstrap-datetimepicker.min.js') ?>"></script>
+
 <style type="text/css">
 table {
   background: white;
@@ -35,51 +38,12 @@ td ,th {
  
 </style>
  
-
-    <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">  Bujang Gadis Fasilkom </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href=""></a>
-                    </li> 
-                    <li>
-                        <a class="page-scroll" href="<?php base_url();?>index">Home</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="<?php base_url();?>formulir">FORMULIR</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="<?php base_url();?>cetak_formulir">CETAK FORMULIR</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href='<?php base_url();?>logout'>Logout</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
     <!-- Header -->
     <header>
         <div class="container">
           
 <body>
-    <?php 
-          echo form_open('peserta/simpanformulir');
-          ?>
+  <?php echo form_open('peserta/simpanformulir'); ?>
   <table class="table table-bordered">
     <thead>
       <tr> 
@@ -148,19 +112,24 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Tanggal Lahir</td>
+        <td>Tanggal Lahir <span style="color: #A80000"> (dd-mm-yy)</span></td>
         <td>
-          <?php 
-              if(isset($peserta->tanggal_lahir)){
-                ?>
-                  <input type="date" name="tanggal_lahir" required value="<?php echo $peserta->tanggal_lahir; ?>">
-                <?php
-              } else { ?>
-                          
-                  <input type="date" name="tanggal_lahir" required value="">
-            <?php
-              }  
-            ?> 
+          <!-- <div class="input-group-addon">
+              <i class="fa fa-calendar"></i>
+          </div> -->
+          <?php if(isset($peserta->tanggal_lahir)){?>
+                <input type="text" name="tanggal_lahir" value="<?= $peserta->tanggal_lahir ?>">
+                <!-- <div class="input-append date form_datetime">
+                  <input required type="text" name="date_mulai" value="<?= $peserta->tanggal_lahir ?>">
+                  <span class="add-on"><i class="icon-th"></i></span>
+                </div> -->
+          <?php } else { ?>
+                <input type="text" name="tanggal_lahir" placeholder="dd-mm-yyyy">
+                <!-- <div class="input-append date form_datetime">
+                  <input required type="text" name="date_mulai">
+                  <span class="add-on"><i class="icon-th"></i></span>
+                </div> -->
+          <?php } ?> 
         </td> 
       </tr>
        <tr>
@@ -521,9 +490,10 @@ td ,th {
       </tr>
       <tr>
         <td><h4><b>Prestasi yang Pernah di Capai</b></h4></td>
-        <td><div id="tambah" class="btn btn-info"><i class="fa fa-plus"></i></div></td> 
+        <td><a id="tambah_prestasi" class="btn btn-info"><i class="fa fa-plus"></i></a></td> 
       </tr>
-      <div id="wrapper">
+      <div>
+      <table id="wrapperrr">
       <?php 
         $prestasi = explode(',', $peserta->prestasi);
         $instansi = explode(',', $peserta->instansi_pemberi);
@@ -540,9 +510,9 @@ td ,th {
           <td></td>
         </tr>
         <tr>
-          <td><input type="text" name="nama_prestasi[<?= $i ?>]" class="form-control" value="<?= $prestasi[$i] ?>"></td>
-          <td><input type="text" name="instansi[<?= $i ?>]" class="form-control" value="<?= $instansi[$i] ?>"></td>
-          <td><input type="text" name="tahun[<?= $i ?>]" class="form-control" value="<?= $tahun[$i] ?>"></td>
+          <td><input type="text" name="nama_prestasi[]" class="form-control" value="<?= $prestasi[$i] ?>"></td>
+          <td><input type="text" name="instansi[]" class="form-control" value="<?= $instansi[$i] ?>"></td>
+          <td><input type="text" name="tahun[]" class="form-control" value="<?= $tahun[$i] ?>"></td>
           <td></td>
         </tr>
 
@@ -562,6 +532,7 @@ td ,th {
           <td></td>
         </tr>
       <?php endif; ?>
+      </table>
       </div>
     </tbody>
   </table>
@@ -577,14 +548,23 @@ td ,th {
   <script type="text/javascript">
     $(document).ready(function(){
       var i = <?= $jmlh ?>;
-      $("#tambah").click(function(){
-        $("#wrapper").append(
-        '<tr>'+
-          '<td><input type="text" name="nama_prestasi['+ i +']" class="form-control" ></td>'+
-          '<td><input type="text" name="instansi['+ i +']" class="form-control"></td>'+
-          '<td><input type="text" name="tahun['+ i +']" class="form-control"></td>'+
+      $("#tambah_prestasi").click(function(){
+        $("#wrapperrr").append('<tr>' +
+          '<td>Nama Penghargaan</td>' +
+          '<td>Instansi Pemberi Penghargaan</td>' +
+          '<td>Tahun</td>' +
+          '<td></td>' +
+        '</tr>' +
+          '<tr>'+
+          '<td><input type="text" name="nama_prestasi[]" class="form-control" ></td>'+
+          '<td><input type="text" name="instansi[]" class="form-control"></td>'+
+          '<td><input type="text" name="tahun[]" class="form-control"></td>'+
           '<td></td>'+
         '</tr>');
+      });
+    
+      $(".form_datetime").datetimepicker({
+          format: "yyyy-mm-dd hh:mm:ss"
       });
     });
 
