@@ -47,7 +47,7 @@ td ,th {
   <table class="table table-bordered">
     <thead>
       <tr> 
-        <th colspan="2" style="text-align:center;"><h2>FORMULIR PENDAFTARAN </h2>  <div style="margin-bottom: 3%;">
+        <th colspan="4" style="text-align:center;"><h2>FORMULIR PENDAFTARAN </h2>  <div style="margin-bottom: 3%;">
         <?php  
           $msg = $this->session->flashdata('msg');
           if(isset($msg)){
@@ -64,7 +64,7 @@ td ,th {
     <tbody>
       <tr>
         <td >Nama Lengkap</td>
-        <td>
+        <td colspan="3">
 
             <?php 
               if(isset($peserta->nama_lengkap)){
@@ -81,7 +81,7 @@ td ,th {
       </tr>
       <tr>
         <td>NIM</td>
-        <td>
+        <td colspan="3">
             <?php 
               if(isset($peserta->nim)){
                 ?>
@@ -97,7 +97,7 @@ td ,th {
       </tr>
        <tr>
         <td>Tempat Lahir</td>
-        <td>
+        <td colspan="3">
             <?php 
               if(isset($peserta->tempat_lahir)){
                 ?>
@@ -134,7 +134,7 @@ td ,th {
       </tr>
        <tr>
         <td>Agama</td>
-        <td>
+        <td colspan="3">
             <?php 
               if(isset($peserta->agama)){
                 ?>
@@ -150,7 +150,7 @@ td ,th {
       </tr>
       <tr>
         <td>Jenis Kelamin</td>
-          <td>
+          <td colspan="3">
           <?php 
               if(isset($peserta->jk)){
                 ?>
@@ -169,7 +169,7 @@ td ,th {
       </tr>
        <tr>
         <td>IPK</td>
-        <td>
+        <td colspan="3">
             <?php 
               if(isset($peserta->ipk)){
                 ?>
@@ -185,7 +185,7 @@ td ,th {
       </tr>
       <tr>
         <td>Jurusan</td>
-        <td>
+        <td colspan="3">
           <select name="jurusan" class="form-control" required>
               <?php if($peserta->jurusan == 'Komputer Akuntansi (D3)'): ?>
                 <option value="Komputer Akuntansi (D3)">Komputer Akuntansi (D3)</option>
@@ -337,7 +337,7 @@ td ,th {
       </tr>
        <tr>
         <td>Angkatan</td>
-        <td>
+        <td colspan="3">
           <select name="angkatan" class="form-control" required>
             <?php if($peserta->angkatan == '2016'): ?>
               <option value="2016">2016</option>
@@ -362,7 +362,7 @@ td ,th {
       </tr>
         <tr>
         <td>ID Line</td>
-       <td>
+       <td colspan="3">
           <?php 
               if(isset($peserta->line)){
                 ?>
@@ -378,7 +378,7 @@ td ,th {
       </tr>
         <tr>
         <td>Instagram</td>
-       <td>
+       <td colspan="3">
           <?php 
               if(isset($peserta->ig)){
                 ?>
@@ -394,7 +394,7 @@ td ,th {
       </tr>
       <tr>
         <td>Alamat</td>
-       <td>
+       <td colspan="3">
           <?php 
               if(isset($peserta->alamat)){
                 ?>
@@ -410,7 +410,7 @@ td ,th {
       </tr>
       <tr>
         <td>Hobi</td>
-         <td>
+         <td colspan="3">
           <?php 
               if(isset($peserta->hobi)){
                 ?>
@@ -426,7 +426,7 @@ td ,th {
       </tr>
       <tr>
         <td>Tinggi Badan</td>
-        <td>
+        <td colspan="3">
           <?php 
               if(isset($peserta->tb)){
                 ?>
@@ -442,7 +442,7 @@ td ,th {
       </tr>
       <tr>
         <td>Berat Badan</td>
-         <td>
+         <td colspan="3">
           <?php 
               if(isset($peserta->bb)){
                 ?>
@@ -458,7 +458,7 @@ td ,th {
       </tr>
       <tr>
         <td>Motivasi Mengikuti BGF</td>
-        <td>
+        <td colspan="3">
           <?php 
               if(isset($peserta->motivasi)){
                 ?>
@@ -474,7 +474,7 @@ td ,th {
       </tr>
        <tr>
         <td>Riwayat Organisasi</td>
-        <td>
+        <td colspan="3">
           <?php 
               if(isset($peserta->riwayat_organisasi)){
                 ?>
@@ -500,13 +500,14 @@ td ,th {
         $tahun    = explode(',', $peserta->tahun_prestasi);
         $jmlh = count($prestasi);
         if($jmlh > 0):
+          
           for($i=0; $i < $jmlh; $i++): 
       ?>
 
         <tr>
           <td>Nama Penghargaan</td>
           <td>Instansi Pemberi Penghargaan</td>
-          <td>Tahun</td>
+          <td>Tahun</td> 
           <td></td>
         </tr>
         <tr>
@@ -522,13 +523,12 @@ td ,th {
         <tr>
           <td>Nama Penghargaan</td>
           <td>Instansi Pemberi Penghargaan</td>
-          <td>Tahun</td>
-          <td></td>
+          <td>Tahun</td> 
         </tr>
         <tr>
           <td><input type="text" name="nama_prestasi[]" class="form-control"></td>
           <td><input type="text" name="instansi[]" class="form-control"></td>
-          <td><input type="text" name="tahun[]" class="form-control"></td>
+          <td><input type="text" name="tahun[]" class="form-control"></td> 
           <td></td>
         </tr>
       <?php endif; ?>
