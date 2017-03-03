@@ -18,7 +18,7 @@
 			}
 
 			if($role != 'admin'){
-				redirect('login');
+				redirect('admin/logout');
 				exit;
 			}
 	 		
@@ -52,13 +52,13 @@
 						// echo "hay";
 						// exit;
 						$this->peserta_model->updt($id_peserta, ['status' => 'tidak lulus']);
-						echo '<button class="btn btn-danger" onclick="changeStatus("'.$id_peserta.'")"><i class="fa fa-close"></i> Tidak Lulus</button>';
+						echo '<button class="btn btn-danger" onclick="changeStatus(\''.$id_peserta.'\')"><i class="fa fa-close"></i> Tidak Lulus</button>';
 					}
 					else
 					{
 						//echo "hoy"; exit;
 						$this->peserta_model->updt($id_peserta, ['status' => 'lulus']);
-						echo '<button class="btn btn-success" onclick="changeStatus("'.$id_peserta.'")"><i class="fa fa-check"></i> Lulus</button>';	
+						echo '<button class="btn btn-success" onclick="changeStatus(\''.$id_peserta.'\')"><i class="fa fa-check"></i> Lulus</button>';	
 					}
 				 }
 			}

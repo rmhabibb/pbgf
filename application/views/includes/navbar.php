@@ -23,6 +23,9 @@
                     <li>
                         <a class="page-scroll" href="<?= base_url() ?>">HOME</a>
                     </li>
+                    <li>
+                        <a href="<?= base_url() ?>#ketentuan">Ketentuan</a>
+                    </li>
                     <?php if($role == "peserta"): ?>
                         <li>
                             <a class="page-scroll" href="<?php base_url();?>peserta/formulir">FORMULIR</a>

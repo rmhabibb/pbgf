@@ -38,13 +38,13 @@
                                             <?php endif; ?>
                                         </div>
                                     </td>
-                                    <td>
-                                        <?php if($role == 'admin'): ?>
+                                    <!-- <td>
+                                        <?php// if($role == 'admin'): ?>
                                             <a href="#" class="btn btn-info"><i class="fa fa-info"> Detail</i></a>
-                                        <?php elseif($role == 'super admin'): ?>
+                                        <?php //elseif($role == 'super admin'): ?>
                                             <a href="#" class="btn btn-info"><i class="fa fa-info"> Detail</i></a>
-                                        <?php endif; ?>
-                                    </td>
+                                        <?php //endif; ?>
+                                    </td> -->
                                 </tr>
                             <?php endif; ?>
                         <?php endforeach; ?>

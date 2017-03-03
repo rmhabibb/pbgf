@@ -17,16 +17,12 @@
 			   exit;
 			}
 
-			if ($role == 'Peserta') {
-				redirect('peserta');	 
+			if($role != 'peserta'){
+				redirect('peserta/logout');
+				exit;
 			}
-			else if ($role == 'admin'){
-				redirect('admin');
-			} else if ($role == 'Panitia'){
-				redirect('admin');
-			} else {
-				redirect('login');
-			}
+
+
 	 	}
  		function logout(){
 			// $this->session->unset_userdata('username');
@@ -54,7 +50,7 @@
 	 		//$data['peserta'] = $this->db->get_where('peserta',array('username' => $username))->row();
 
 	 		$data = [
- 				'title' 	=> 'Formulir| ',
+ 				'title' 	=> 'Formulir | ',
  				'content'	=> 'pages/peserta/formulir-pendaftaran',
  				'peserta'	=> $this->Peserta_model->get_row($username)
  			]; 
@@ -180,7 +176,8 @@
 	   	 	$username   = $this->session->userdata('username');
 	 		$data['peserta'] =  $this->Peserta_model->get_row($username);	
 
-			$html =	$this->load->view('pages/peserta/cetakformulir',$data,true);  
+			$html =	$this->load->view('pages/peserta/cetakformulir_page1',$data,true); 
+			$html2 =	$this->load->view('pages/peserta/cetakformulir_page2',$data,true);  
  
  
 	        $pdfFilePath = "Formulir Pendaftaran PBGF - " . $username . ".pdf"; 
@@ -188,6 +185,8 @@
 		    $this->load->library('m_pdf');
 	  	  
 	        $this->m_pdf->pdf->WriteHTML($html);
+	        $this->m_pdf->pdf->addPage();
+	        $this->m_pdf->pdf->WriteHTML($html2);
 	        
 	        $this->m_pdf->pdf->Output($pdfFilePath, "D");
 	    }

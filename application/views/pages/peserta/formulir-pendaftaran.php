@@ -38,24 +38,23 @@ td ,th {
  
 </style>
  
-    <!-- Header -->
-    <header>
-        <div class="container">
-          
 <body>
+    <!-- Header -->
+  <header>
+      <div class="container">   
   <?php echo form_open('peserta/simpanformulir'); ?>
   <table class="table table-bordered">
     <thead>
       <tr> 
-        <th colspan="4" style="text-align:center;"><h2>FORMULIR PENDAFTARAN </h2>  <div style="margin-bottom: 3%;">
-        <?php  
-          $msg = $this->session->flashdata('msg');
-          if(isset($msg)){
-            echo $msg;
-          }
-        ?>
-      </div>
-
+        <th colspan="4" style="text-align:center;"><h2>FORMULIR PENDAFTARAN </h2>  
+          <div style="margin-bottom: 3%;">
+          <?php  
+            $msg = $this->session->flashdata('msg');
+            if(isset($msg)){
+              echo $msg;
+            }
+          ?>
+        </div>
        </th> 
      
       </tr>
@@ -63,7 +62,7 @@ td ,th {
 
     <tbody>
       <tr>
-        <td >Nama Lengkap</td>
+        <td style="padding: 2%;">Nama Lengkap</td>
         <td colspan="3">
 
             <?php 
@@ -80,7 +79,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>NIM</td>
+        <td style="padding: 2%;">NIM</td>
         <td colspan="3">
             <?php 
               if(isset($peserta->nim)){
@@ -96,7 +95,7 @@ td ,th {
         </td> 
       </tr>
        <tr>
-        <td>Tempat Lahir</td>
+        <td style="padding: 2%;">Tempat Lahir</td>
         <td colspan="3">
             <?php 
               if(isset($peserta->tempat_lahir)){
@@ -112,7 +111,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Tanggal Lahir <span style="color: #A80000"> (dd-mm-yy)</span></td>
+        <td style="padding: 2%;">Tanggal Lahir</span></td>
         <td>
           <!-- <div class="input-group-addon">
               <i class="fa fa-calendar"></i>
@@ -133,23 +132,65 @@ td ,th {
         </td> 
       </tr>
        <tr>
-        <td>Agama</td>
+        <td style="padding: 2%;">Agama</td>
         <td colspan="3">
-            <?php 
-              if(isset($peserta->agama)){
-                ?>
-                  <input type="text" name="agama" required value="<?php echo $peserta->agama; ?>">
-                <?php
-              } else { ?>
-                          
-                  <input type="text" name="agama" required value="">
-            <?php
-              }  
-            ?> 
+          <select name="agama" class="form-control" required>
+            <?php if($peserta->agama == 'Islam'): ?>
+              <option value="Islam">Islam</option>
+              <option value="Kristen Protestan">Kristen Protestan</option>
+              <option value="Katolik">Katolik</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Buddha">Buddha</option>
+              <option value="Lainnya">Lainnya</option>
+            <?php elseif($peserta->agama == 'Kristen Protestan'): ?>
+              <option value="Kristen Protestan">Kristen Protestan</option>
+              <option value="Katolik">Katolik</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Buddha">Buddha</option>
+              <option value="Islam">Islam</option>
+              <option value="Lainnya">Lainnya</option>
+            <?php elseif($peserta->agama == 'Katolik'): ?>
+              <option value="Katolik">Katolik</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Buddha">Buddha</option>
+              <option value="Islam">Islam</option>
+              <option value="Kristen Protestan">Kristen Protestan</option>
+              <option value="Lainnya">Lainnya</option>
+              <?php elseif($peserta->agama == 'Hindu'): ?>
+              <option value="Hindu">Hindu</option>
+              <option value="Buddha">Buddha</option>
+              <option value="Islam">Islam</option>
+              <option value="Kristen Protestan">Kristen Protestan</option>
+              <option value="Katolik">Katolik</option>
+              <option value="Lainnya">Lainnya</option>
+              <?php elseif($peserta->agama == 'Buddha'): ?>
+              <option value="Buddha">Buddha</option>
+              <option value="Islam">Islam</option>
+              <option value="Kristen Protestan">Kristen Protestan</option>
+              <option value="Katolik">Katolik</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Lainnya">Lainnya</option>
+              <?php elseif($peserta->agama == 'Lainnya'): ?>
+              <option value="Lainnya">Lainnya</option>
+              <option value="Buddha">Buddha</option>
+              <option value="Islam">Islam</option>
+              <option value="Kristen Protestan">Kristen Protestan</option>
+              <option value="Katolik">Katolik</option>
+              <option value="Hindu">Hindu</option>
+            <?php else: ?>
+              <option value="">Pilih Agama</option> 
+              <option value="Islam">Islam</option>
+              <option value="Kristen Protestan">Kristen Protestan</option>
+              <option value="Katolik">Katolik</option>
+              <option value="Hindu">Hindu</option>
+              <option value="Buddha">Buddha</option>
+              <option value="Lainnya">Lainnya</option>
+            <?php endif; ?>
+          </select>
         </td> 
       </tr>
       <tr>
-        <td>Jenis Kelamin</td>
+        <td style="padding: 2%;">Jenis Kelamin</td>
           <td colspan="3">
           <?php 
               if(isset($peserta->jk)){
@@ -168,7 +209,7 @@ td ,th {
         </td> 
       </tr>
        <tr>
-        <td>IPK</td>
+        <td style="padding: 2%;">IPK</td>
         <td colspan="3">
             <?php 
               if(isset($peserta->ipk)){
@@ -184,7 +225,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Jurusan</td>
+        <td style="padding: 2%;">Jurusan</td>
         <td colspan="3">
           <select name="jurusan" class="form-control" required>
               <?php if($peserta->jurusan == 'Komputer Akuntansi (D3)'): ?>
@@ -336,7 +377,7 @@ td ,th {
             </select></td> 
       </tr>
        <tr>
-        <td>Angkatan</td>
+        <td style="padding: 2%;">Angkatan</td>
         <td colspan="3">
           <select name="angkatan" class="form-control" required>
             <?php if($peserta->angkatan == '2016'): ?>
@@ -361,7 +402,7 @@ td ,th {
         </td>
       </tr>
         <tr>
-        <td>ID Line</td>
+        <td style="padding: 2%;">ID Line</td>
        <td colspan="3">
           <?php 
               if(isset($peserta->line)){
@@ -377,7 +418,7 @@ td ,th {
         </td> 
       </tr>
         <tr>
-        <td>Instagram</td>
+        <td style="padding: 2%;">Instagram</td>
        <td colspan="3">
           <?php 
               if(isset($peserta->ig)){
@@ -393,7 +434,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Alamat</td>
+        <td style="padding: 2%;">Alamat</td>
        <td colspan="3">
           <?php 
               if(isset($peserta->alamat)){
@@ -409,7 +450,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Hobi</td>
+        <td style="padding: 2%;">Hobi</td>
          <td colspan="3">
           <?php 
               if(isset($peserta->hobi)){
@@ -425,7 +466,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Tinggi Badan</td>
+        <td style="padding: 2%;">Tinggi Badan</td>
         <td colspan="3">
           <?php 
               if(isset($peserta->tb)){
@@ -441,7 +482,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Berat Badan</td>
+        <td style="padding: 2%;">Berat Badan</td>
          <td colspan="3">
           <?php 
               if(isset($peserta->bb)){
@@ -457,7 +498,7 @@ td ,th {
         </td> 
       </tr>
       <tr>
-        <td>Motivasi Mengikuti BGF</td>
+        <td style="padding: 2%;">Motivasi Mengikuti BGF</td>
         <td colspan="3">
           <?php 
               if(isset($peserta->motivasi)){
@@ -473,7 +514,7 @@ td ,th {
         </td> 
       </tr>
        <tr>
-        <td>Riwayat Organisasi</td>
+        <td style="padding: 2%;">Riwayat Organisasi</td>
         <td colspan="3">
           <?php 
               if(isset($peserta->riwayat_organisasi)){
@@ -488,12 +529,17 @@ td ,th {
             ?> 
         </td> 
       </tr>
-      <tr>
-        <td><h4><b>Prestasi yang Pernah di Capai</b></h4></td>
-        <td><a id="tambah_prestasi" class="btn btn-info"><i class="fa fa-plus"></i></a></td> 
-      </tr>
-      <div>
-      <table id="wrapperrr">
+      </table>
+      <table id="wrapperrr"  class="table table-bordered">
+        <tr>
+          <td colspan="2"><h4><b>Prestasi yang Pernah di Capai</b> <a id="tambah_prestasi" class="btn btn-info"><i class="fa fa-plus"></i></a></h4></td>
+        </tr>
+        <tr>
+          <td>Nama Penghargaan</td>
+          <td>Instansi Pemberi Penghargaan</td>
+          <td>Tahun</td> 
+          <td></td>
+        </tr>
       <?php 
         $prestasi = explode(',', $peserta->prestasi);
         $instansi = explode(',', $peserta->instansi_pemberi);
@@ -503,13 +549,6 @@ td ,th {
           
           for($i=0; $i < $jmlh; $i++): 
       ?>
-
-        <tr>
-          <td>Nama Penghargaan</td>
-          <td>Instansi Pemberi Penghargaan</td>
-          <td>Tahun</td> 
-          <td></td>
-        </tr>
         <tr>
           <td><input type="text" name="nama_prestasi[]" class="form-control" value="<?= $prestasi[$i] ?>"></td>
           <td><input type="text" name="instansi[]" class="form-control" value="<?= $instansi[$i] ?>"></td>
@@ -534,28 +573,21 @@ td ,th {
       <?php endif; ?>
       </table>
       </div>
-    </tbody>
-  </table>
-   <button type="submit" name="simpan" value="Daftar" class="button button-block"/>Simpan</button>
+      <div class="container">
+        <button type="submit" name="simpan" value="Daftar" class="button button-block"/>Simpan</button>
+      </div>
           
           <?php 
           echo form_close();
           ?> 
           </div>
    </header>
-           
-
+  </div>
   <script type="text/javascript">
     $(document).ready(function(){
       var i = <?= $jmlh ?>;
       $("#tambah_prestasi").click(function(){
-        $("#wrapperrr").append('<tr>' +
-          '<td>Nama Penghargaan</td>' +
-          '<td>Instansi Pemberi Penghargaan</td>' +
-          '<td>Tahun</td>' +
-          '<td></td>' +
-        '</tr>' +
-          '<tr>'+
+        $("#wrapperrr").append('<tr>'+
           '<td><input type="text" name="nama_prestasi[]" class="form-control" ></td>'+
           '<td><input type="text" name="instansi[]" class="form-control"></td>'+
           '<td><input type="text" name="tahun[]" class="form-control"></td>'+
@@ -571,4 +603,6 @@ td ,th {
   </script>
     
     
-      
+            
+</body>
+     

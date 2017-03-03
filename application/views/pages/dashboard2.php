@@ -1,47 +1,71 @@
- <!-- Header -->
-    <header>
+
+    <!-- Navigation -->
+        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="http://www.unsri.ac.id/" target="_blank"><img src="<?php echo base_url(); ?>assets/img/team/unsri.png" width="50px" style="margin-top: 0px; padding-top: 0px"></a>
+                <a class="navbar-brand page-scroll" href=""><img src="<?php echo base_url(); ?>assets/img/team/bem.png" width="50px"></a>
+                <a class="navbar-brand page-scroll" href=""><img src="<?php echo base_url(); ?>assets/img/team/ibgf.png" width="50px"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href=""></a>
+                    </li> 
+                    <li>
+                        <a class="page-scroll" href="#Home"><b>Home</b></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#Ketentuan"><b>Ketentuan</b></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#Jadwal"><b>Jadwal</b></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#Kontak"><b>Kontak</b></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="<?php base_url();?>sign"><b>Login/Daftar</b></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header id="Home">
         <div class="container">
             <div class="intro">
                 <div class="logo"><img src="<?php echo base_url(); ?>assets/img/logos/logos.png"></div> 
  
             </div>
-           
-            <div class="container">
- 
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="<?php echo base_url(); ?>assets/img/team/unsri.png" class="img-responsive img-circle" alt="">
-                        <h4>Universitas Sriwijaya</h4> <br> 
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="<?php echo base_url(); ?>assets/img/team/bem.png" class="img-responsive img-circle" alt="">
-                        <h4>BEM KM Fasilkom 2017</h4> <br>  
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="<?php echo base_url(); ?>assets/img/team/ibgf.png" class="img-responsive img-circle" alt="">
-                        <h4>Ikatan Bujang Gadis Fasilkom</h4> <br> 
-                    </div>
-                </div>
+            <div class="sign">
+                
+                <div ><a href="<?php base_url();?>sign"><img src="<?php echo base_url(); ?>assets/img/log.png"></a></div> 
             </div>
 
-        </div>
-    </header>
+           
+             
+    </header><img class="hrstyle" src="<?php echo base_url(); ?>assets/img\hr.png">
 <br><br><br>
-    <img class="hrstyle" src="<?php echo base_url(); ?>assets/img\hr.png">
-<br><br><br>       
-    <section id="ketentuan">
-        <div class="row">
-            <div class="col-sm-12"> 
-                    <img src="<?php echo base_url(); ?>assets/img/syarat2.png"  width="60%"  alt=""> 
-            </div>        
+ <section id="Ketentuan" class="bg-light-gray">
+            
+             
+            <div class="row">
+                <div class="col-sm-12"> 
+                        <img src="<?php echo base_url(); ?>assets/img/syarat2.png"  width="60%"  alt=""> 
+                </div> 
+               
         </div>
-    </section>
-<br><br><br>
+    </section> <br><br><br>
     <img class="hrstyle" src="<?php echo base_url(); ?>assets/img\hr.png">
     <br><br><br>
         <section id="Jadwal" style="margin-bottom: 50px">
@@ -164,7 +188,7 @@
                 </div> 
                 <div class="col-sm-4">
                     <div class="team-member" >
-                        <img src="<?php echo base_url(); ?>assets/img/cp222.png" width="330px"  class="img-responsive img-circle" alt="">
+                        <img src="<?php echo base_url(); ?>assets/img/cp222.png" width="320px"  class="img-responsive img-circle" alt="">
                         <h2>Anindya Putri</h2> 
                         <h3 class="text-muted">(08117119891)
                         <br>
@@ -187,4 +211,4 @@
             
 
         </div>
-    </section> 
+</section> 
